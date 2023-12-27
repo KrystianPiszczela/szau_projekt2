@@ -16,8 +16,8 @@ g1_wer = zeros(kk,1);
 y_wer = zeros(kk,1);
 
 for i=1:50:kk
-    u_ucz(i:i+50) = -1 + 2*rand;
-    u_wer(i:i+50) = -1 + 2*rand;
+    u_ucz(i:i+49) = -1 + 2*rand;
+    u_wer(i:i+49) = -1 + 2*rand;
 end
 
 for k=kp:kk
@@ -40,7 +40,11 @@ xlabel('Numer próbki k');
 ylabel('Sygnał wyjściowy y');
 title('Dane uczące');
 plot_data = [t' y_ucz];
-save('wyniki/zad1_dane_uczace.txt','plot_data', '-ascii')
+save('wyniki/zad1/zad1_dane_uczace_y.txt','plot_data', '-ascii')
+plot_data = [t' u_ucz];
+save('wyniki/zad1/zad1_dane_uczace_u.txt','plot_data', '-ascii')
+plot_data = [u_ucz y_ucz];
+save('wyniki/zad1/zad1_dane_uczace_sieci.txt','plot_data', '-ascii')
 
 figure
 plot(y_wer)
@@ -48,4 +52,8 @@ xlabel('Numer próbki k');
 ylabel('Sygnał wyjściowy y');
 title('Dane weryfikujące');
 plot_data = [t' y_wer];
-save('wyniki/zad1_dane_weryfikujace.txt','plot_data', '-ascii')
+save('wyniki/zad1/zad1_dane_weryfikujace_y.txt','plot_data', '-ascii')
+plot_data = [t' u_wer];
+save('wyniki/zad1/zad1_dane_weryfikujace_u.txt','plot_data', '-ascii')
+plot_data = [u_wer y_wer];
+save('wyniki/zad1/zad1_dane_weryfikujace_sieci.txt','plot_data', '-ascii')

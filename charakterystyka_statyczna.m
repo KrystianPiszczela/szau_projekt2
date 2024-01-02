@@ -5,7 +5,7 @@ stala = (beta1+beta2)/(1 + alfa1 + alfa2);
 
 for i=1:size(u,2)
     g1 = (exp(4.75*u(i))-1)/(exp(4.75*u(i))+1);
-    y(i) = 1-exp(stala*g1);
+    y(i) = 1-exp(-1.5*stala*g1);
 end
 
 figure

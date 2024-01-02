@@ -24,12 +24,12 @@ for k=kp:kk
     g1_ucz(k-3) = (exp(4.75*u_ucz(k-3))-1)/(exp(4.75*u_ucz(k-3))+1);
     x1_ucz(k) = -alfa1*x1_ucz(k-1) + x2_ucz(k-1) + beta1*g1_ucz(k-3);
     x2_ucz(k) = -alfa2*x1_ucz(k-1) + beta2*g1_ucz(k-3);
-    y_ucz(k) = 1-exp(x1_ucz(k));
+    y_ucz(k) = 1-exp(-1.5*x1_ucz(k));
 
     g1_wer(k-3) = (exp(4.75*u_wer(k-3))-1)/(exp(4.75*u_wer(k-3))+1);
     x1_wer(k) = -alfa1*x1_wer(k-1) + x2_wer(k-1) + beta1*g1_wer(k-3);
     x2_wer(k) = -alfa2*x1_wer(k-1) + beta2*g1_wer(k-3);
-    y_wer(k) = 1-exp(x1_wer(k));
+    y_wer(k) = 1-exp(-1.5*x1_wer(k));
 end
 
 

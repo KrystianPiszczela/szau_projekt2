@@ -46,5 +46,5 @@ xlabel('Numer próbki k');
 ylabel('Sygnał wyjściowy y');
 legend(' y_{mod}','y');
 
-nazwa = ['wyniki/zad2/zad2_6/zad22_E_',num2str(E_wer),'.mat'];
+nazwa = ['wyniki/zad2/5warstw_v2/zad22_E_',num2str(E_wer),'.mat'];
 save(nazwa)

@@ -1,9 +1,9 @@
 clear
 dane()
-N = 5;
-Nu = 4;
-lambda = 600;
-delta = 0.00000005;
+N = 20;
+Nu = 10;
+lambda = 100;
+delta = 1e-5;
 
 kp=5;
 kk=2000;
@@ -14,7 +14,6 @@ y_zad(0.6*kk:0.8*kk) = -0.5;
 y_zad(0.8*kk:kk) = 0.2;
 
 u = zeros(kk,1); x1 = zeros(kk,1); x2 = zeros(kk,1); g1 = zeros(kk,1); y = zeros(kk,1);
-
 
 d = zeros(kk,1); y_mod = zeros(kk, 1); y_swob = zeros(N, kk); y_swob(1:kp-1) = y(1:kp-1);
 f = zeros(kk,1); a_1 = zeros(kk,1); a_2 = zeros(kk,1); b_3 = zeros(kk,1); b_4 = zeros(kk,1);
@@ -28,7 +27,7 @@ for k=kp:kk
     g1(k-3) = (exp(4.75*u(k-3))-1)/(exp(4.75*u(k-3))+1);
     x1(k) = -alfa1*x1(k-1) + x2(k-1) + beta1*g1(k-3);
     x2(k) = -alfa2*x1(k-1) + beta2*g1(k-3);
-    y(k) = 1-exp(-1.5*x1(k));
+    y(k) = 1-exp(1*x1(k));
 
     % 2. obliczenie błędku modelu d(k)
     q = [u(k-3);u(k-4);y_mod(k-1);y_mod(k-2)];

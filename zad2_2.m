@@ -1,6 +1,6 @@
-clear
-run('sieci/uczenie.m')
-run('sieci/model.m')
+% clear;
+% run('sieci/uczenie.m')
+% run('sieci/model.m')
 dane_wer = load('wyniki/zad1/zad1_dane_weryfikujace_sieci.txt');
 dane_ucz = load('wyniki/zad1/zad1_dane_uczace_sieci.txt');
 u_wer = dane_wer(:,1);
@@ -39,12 +39,12 @@ disp(E_ucz);
 
 t = 1:kk;
 figure
-plot(y_mod_wer);
-hold on;
 plot(y_wer);
+hold on;
+plot(y_mod_wer, '--', LineWidth=1.8);
 xlabel('Numer próbki k');
 ylabel('Sygnał wyjściowy y');
-legend(' y_{mod}','y');
+legend(' y_{mod}','y',Location='east');
 
-nazwa = ['wyniki/zad2/5warstw_v2/zad22_E_',num2str(E_wer),'.mat'];
+nazwa = ['wyniki/zad2/zad2_6/zad22_E_',num2str(E_wer),'.mat'];
 save(nazwa)

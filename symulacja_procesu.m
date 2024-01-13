@@ -38,7 +38,8 @@ figure
 plot(y_ucz)
 xlabel('Numer próbki k');
 ylabel('Sygnał wyjściowy y');
-title('Dane uczące');
+title('Dane uczące - sygnał wyjściowy');
+print('wyniki/zad1/zad1_dane_ucz.pdf','-dpng','-r400')
 plot_data = [t' y_ucz];
 save('wyniki/zad1/zad1_dane_uczace_y.txt','plot_data', '-ascii')
 plot_data = [t' u_ucz];
@@ -47,10 +48,25 @@ plot_data = [u_ucz y_ucz];
 save('wyniki/zad1/zad1_dane_uczace_sieci.txt','plot_data', '-ascii')
 
 figure
+plot(u_ucz)
+xlabel('Numer próbki k');
+ylabel('Sterowanie u');
+title('Dane uczące - sterowanie');
+print('wyniki/zad1/zad1_u_ucz.pdf','-dpng','-r400')
+
+figure
+plot(u_wer)
+xlabel('Numer próbki k');
+ylabel('Sterowanie u');
+title('Dane weryfikujące - sterowanie');
+print('wyniki/zad1/zad1_u_wer.pdf','-dpng','-r400')
+
+figure
 plot(y_wer)
 xlabel('Numer próbki k');
 ylabel('Sygnał wyjściowy y');
-title('Dane weryfikujące');
+title('Dane weryfikujące - sygnał wyjściowy');
+print('wyniki/zad1/zad1_dane_wer.pdf','-dpng','-r400')
 plot_data = [t' y_wer];
 save('wyniki/zad1/zad1_dane_weryfikujace_y.txt','plot_data', '-ascii')
 plot_data = [t' u_wer];

@@ -1,5 +1,14 @@
 function [J] = NO_fun(u_pred)
-global N Nu k u y d y_zad lambda;
+% global N Nu k u y d y_zad lambda;
+
+N = evalin("base", "N");
+Nu = evalin("base", "Nu");
+k = evalin("base", "k");
+u = evalin("base", "u");
+y = evalin("base", "y");
+d = evalin("base", "d");
+y_zad = evalin("base", "y_zad");
+lambda = evalin("base", "lambda");
 
 y_swob = zeros(N,1);
 du_pred = zeros(Nu,1);
@@ -13,10 +22,10 @@ for i=1:N
     elseif i == 3
         q = [u_pred(i-2);u(k-1);y_swob(i-1);y(k)];                          % u(k|k) = u_pred(1) => u(k+a|k) = u_pred(i-(a-2))
     else
-        q = [u_pred(i-2);u_pred(i-3);y_swob(i-1);y_swob(i-2)];
+        q = [u_pred(min(i-2,Nu));u_pred(min(i-3,Nu));y_swob(i-1);y_swob(i-2)];
     end
     y_swob(i) = model(q) + d;
-    J = J + (y_zad(i) - y_swob(i))^2;
+    J = J + (y_zad(k) - y_swob(i))^2;
 end
 
 for i=1:Nu

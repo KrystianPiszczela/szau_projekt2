@@ -5,17 +5,16 @@ Ypp = 0;
 Tp = 1;
 
 
-
 %% Wybór regulatora
 %%  NPL: 1, GPC: 2, PID: 3, NO: 4
 % tryb = 1;
 % tryb = 2;
-% tryb = 3;
-tryb = 4;
+tryb = 3;
+% tryb = 4;
 
 %% Parametry regulatorów
 % NPL i GPC:
-N=18; Nu=6; lambda=0.1; delta = 1e-5;
+N=18; Nu=6; lambda=0.75; delta = 1e-5;
 
 % PID - metoda Zieglera Nicholsa:
 Tu = 17; Ku = 4.2; Kp = 0.6*Ku; Ti = Tu/2; Td = Tu/8;
@@ -27,7 +26,6 @@ r0 = Kp*(1+(Tp/(2*Ti))+(Td/Tp));
 
 kp=5;
 kk=1000;
-u_max = 0.75;
 y_zad(1:0.2*kk) = 0;
 y_zad(0.2*kk:0.4*kk) = -1.5;
 y_zad(0.4*kk:0.6*kk) = 0.5;
@@ -180,9 +178,9 @@ if tryb == 1 || tryb == 2 || tryb == 4 % 1=NPL, 2=GPC, 4=NO
            % 10. u(k) = du(k|k) + u(k-1), gdzie du(k|k) to pierwszy element macierzy dU(k) -- wspólne GPC i NPL
            u_chwilowe = dU(1) + u(k-1);
        elseif tryb == 4 % czyli NO
-           x0 = Upp*ones(1,N);
-           lb = u_min*ones(1,N);
-           ub = u_max*ones(1,N);
+           x0 = Upp*ones(1,Nu);
+           lb = u_min*ones(1,Nu);
+           ub = u_max*ones(1,Nu);
            U = fmincon(@NO_fun,x0,[],[],[],[],lb,ub);
            u_chwilowe = U(1);
        end
@@ -220,6 +218,7 @@ if tryb == 3
     end
 end
 E
+toc
 
 if tryb == 1
     nazwa1 = ['wyniki/zad4/N',num2str(N),'Nu',num2str(Nu),'lambda',num2str(lambda)];

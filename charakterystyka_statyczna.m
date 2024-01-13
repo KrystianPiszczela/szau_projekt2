@@ -15,4 +15,5 @@ ylabel('Sygnał wyjściowy y');
 title('Charakterystyka statyczna y(u)');
 plot_data = [u' y'];
 save('wyniki/zad1/zad1_char_stat.txt','plot_data', '-ascii')
+print('wyniki/zad1/zad1_char_stat.pdf','-dpng','-r400')
 
